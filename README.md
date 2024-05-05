@@ -1,3 +1,43 @@
-# simple-physical-simulations
+Modeling of physical processes associated with a pendulum and a spring-mass system with damped oscillatory motion
 
-Modeling of physical processes associated with a pendulum and a spring-mass system
+# Preview
+> TODO
+
+# Build
+## Option 1. CMake with FetchContent (recomended)
+Prerequisite:
+- git (on Windows must be available in terminal, i.e. path to the git folder is in the PATH system variable)
+- CMake
+
+Run:
+```Shell
+git clone https://codeberg.org/ulfecoder/simple-physical-simulations
+cd simple-physical-simulations
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
+make
+./simulation
+```
+
+## Option 2. VS 2022 + MSBuild with vcpkg
+1) Create new C++ Empty Project.
+2) Move all .hpp files in include folder to headers of project.
+3) Move all .cpp files in src folder to sources of project.
+4) Open the Developer command prompt in Visual Studio.
+    - Menu: View -> Terminal or Menu: Tools -> Command Line -> Developer PowerShell
+5) Run:
+```PowerShell
+vcpkg integrate install
+vcpkg new --application
+```
+6) Enable manifest mode.
+    - Navigate to the Project Properties pages of project. Under Configuration Properties > vcpkg, set Use vcpkg manifest to Yes.
+7) Run:
+```PowerShell
+vcpkg add port imgui-sfml
+vcpkg add port implot
+```
+8) Build.
+
+More informaion: https://learn.microsoft.com/en-us/vcpkg/get_started/get-started-msbuild?pivots=shell-cmdon
