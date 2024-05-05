@@ -37,7 +37,7 @@ set(IMGUI_SFML_IMGUI_DEMO ON)
 FetchContent_MakeAvailable(imgui-sfml)
 FetchContent_MakeAvailable(implot)
 
-#implot
+#implot alternative linking (undone yet)
 #add_library(implot
 	#libs/implot/implot.cpp
 	#libs/implot/implot_items.cpp
@@ -65,8 +65,3 @@ target_include_directories(simulation PRIVATE
 	${PROJECT_SOURCE_DIR}/build/_deps/implot-src
 	${PROJECT_SOURCE_DIR}/build/_deps/imgui-src
 	)
-
-#############################################################
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-#cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
