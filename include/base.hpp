@@ -9,7 +9,7 @@ public:
     float stepTime; // dt to build vectors<float>
     float chosenStepTime; // dt to show on screen
     float endTime;
-    std::vector<float> timePoints; // TODO: remove
+    std::vector<float> timePoints; // TODO: remove?
     BasePhysicalSystem();
     virtual ~BasePhysicalSystem() = 0;
     virtual void CalculateMagnitudes() = 0;

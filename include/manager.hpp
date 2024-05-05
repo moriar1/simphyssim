@@ -12,8 +12,7 @@ class SimulationManager {
 
     Text m_text;
     BasePhysicalSystem* m_chosenSystem;
-    // TODO: bool[enum] array
-    bool m_isShowPlotLines[9]; // 0 - coordinate, 1 - velocity, 2 - acceleration, 345 - x, 678 - y
+    bool m_isShowPlotLines[3]; // 0 - coordinate, 1 - velocity, 2 - acceleration
     bool m_isShowAnimation;
 
     void Render();

@@ -34,10 +34,7 @@ void SimulationManager::Render() {
     ImGui::Begin("Configuration");
     ImGui::Checkbox("Show animation", &m_isShowAnimation);
     ImGui::SameLine();
-    bool dummy = 0;
-    // Perhaps should be added:
-    // ImGui::Checkbox("Show details", &dummy); ImGui::SameLine();
-    // ImGui::Checkbox("Show formulas", &dummy); ImGui::SameLine();
+    // TODO: ImGui::Checkbox("Show formulas", &dummy); ImGui::SameLine();
     ImGui::Checkbox("Use physical symbols", &m_text.GetIsUseSymbolsRef());
     ImGui::SameLine();
     ImGui::SetNextItemWidth(100);
@@ -46,8 +43,8 @@ void SimulationManager::Render() {
         ShowHarmonicOscillator();
     }
     // TODO:
+    //
     //	add file output
-    //	runtime change plot limits
     //	restart animation button
     // ImGui::SetNextItemWidth(120);
     // ImGui::InputFloat("Time Step", &(dynamic_cast<HarmonicOscillator*>(m_chosenSystem)->chosenStepTime), 0.001f,
@@ -65,7 +62,7 @@ void SimulationManager::Render() {
         ImVec2(m_mainViewport->Size.x / 2 - 20, 120) /*, ImGuiCond_FirstUseEver*/); // TODO:
                                                                                     // uncomment
                                                                                     // flag
-    if (dynamic_cast<HarmonicOscillator*>(m_chosenSystem)) {
+    if (dynamic_cast<HarmonicOscillator*>(m_chosenSystem)) { // TODO: relocate
         ImGui::Begin("Data");
         ImGui::SetWindowCollapsed(true, ImGuiCond_FirstUseEver);
         // ImGui::TextWrapped("End time / 0.005 = %d\nNote: if you chose more than one plot, (End time / Step time)
@@ -100,7 +97,7 @@ void SimulationManager::Render() {
     ImGui::SFML::Render(m_appWindow);
     m_appWindow.display();
 }
-
+// TODO: relocate function
 void SimulationManager::ShowHarmonicOscillator() {
     HarmonicOscillator* l_harmonic = dynamic_cast<HarmonicOscillator*>(m_chosenSystem);
     // dynamic first slider
@@ -130,9 +127,7 @@ void SimulationManager::ShowHarmonicOscillator() {
                            ("%." + std::to_string(m_text.GetPrecision()) + "f " + l_tempUnits).c_str()) ||
         ImGui::SliderFloat(m_text.GetMagnitudes(l_harmonic, flag_frictionCoefficient).c_str(),
                            &(l_harmonic->frictionCoefficient), 0.0f, 1.f,
-                           ("%." + std::to_string(m_text.GetPrecision()) + "f").c_str())
-        // TODO
-    ) {
+                           ("%." + std::to_string(m_text.GetPrecision()) + "f").c_str())) {
         l_harmonic->CalculateMagnitudes();
     }
 

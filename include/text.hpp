@@ -25,7 +25,7 @@ enum MagnitudesFlags_ {
 	flag_coordinate                = 1 << 5,
 	flag_velocity                  = 1 << 6,
 	flag_acceleration              = 1 << 7,
-	flag_mass                      = 1 << 8, // harmonic oscillator block_mass only
+	flag_mass                      = 1 << 8, 
 	flag_frictionCoefficient       = 1 << 9,
 	flag_springConstant            = 1 << 10,
 	flag_length                    = 1 << 11,
