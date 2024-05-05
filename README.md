@@ -1,5 +1,3 @@
-Modeling of physical processes associated with a pendulum and a spring-mass system with damped oscillatory motion
-
 # Preview
 > TODO
 
