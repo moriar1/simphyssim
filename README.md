@@ -39,3 +39,7 @@ vcpkg add port implot
 8) Build.
 
 More informaion: https://learn.microsoft.com/en-us/vcpkg/get_started/get-started-msbuild?pivots=shell-cmdon
+
+# Tips
+- Press ctrl and click on slider line to enter exact value
+- In the "Data" window you could see Standard deviation of arithmetic mean of full mechanical energy. If set Friction coefficient to 0.0 it will show the calculating error of mechanical energy. So, for example, if you have 1000000 values in container (shows lower), you will be able to multiply it on 1.959966 (Student's t-distribution for 95%) to get relative error.
