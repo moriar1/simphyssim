@@ -12,24 +12,19 @@ HarmonicOscillator::~HarmonicOscillator() {
 }
 
 void HarmonicOscillator::CalculateMagnitudes() {
-    // TODO: relocate into basePhiscicalSystem::CalculateMagnitudes()
-    // TODO: REMOVE THAT CODE DUPLICATION
     const size_t l_vectorSize = static_cast<size_t>(endTime / stepTime);
-    timePoints.clear();
-    timePoints.reserve(l_vectorSize);
-    timePoints.push_back(0.f);
-    coordinates.clear();
-    coordinates.reserve(l_vectorSize);
-    coordinates.push_back(initialCoordinate);
-    velocities.clear();
-    velocities.reserve(l_vectorSize);
-    velocities.push_back(0.f);
-    accelerations.clear();
-    accelerations.reserve(l_vectorSize);
+    // clang-format off
+    // or just auto l_vectors = {..
+    std::vector<std::reference_wrapper<std::vector<float>>> l_vectors = {std::ref(timePoints),
+        std::ref(coordinates), std::ref(velocities), std::ref(accelerations),
+        std::ref(mEnergies),std::ref(mEnergyDeviations)
+    };
+    // clang-format on
 
-    mEnergies.clear();
-    mEnergies.reserve(l_vectorSize);
-
-    mEnergyDeviations.clear();
-    mEnergyDeviations.reserve(l_vectorSize);
+    for (auto& it : l_vectors) {
+        it.get().clear();
+        it.get().reserve(l_vectorSize);
+        it.get().push_back(0.f);
+    }
+    coordinates[0] = initialCoordinate;
 }

@@ -18,9 +18,9 @@ void Pendulum::CalculateMagnitudes() {
 
     float l_time = 0.f;
     float l_beta = frictionCoefficient / (2 * mass); // beta = b/2m
-    accelerations.push_back(-9.80665f / length * sin(coordinates[0]));
+    accelerations[0] = -9.80665f / length * sin(coordinates[0]);
     for (size_t i = 1; i < l_vectorSize; i++) {
-        accelerations.push_back(-2 * l_beta * velocities[i - 1] -
+        accelerations.push_back(-2.f * l_beta * velocities[i - 1] -
                                 (9.80665f / length) * sin(coordinates[i - 1])); // a = -2*beta*w - w0^2sin(teta)
 
         velocities.push_back(velocities[i - 1] + accelerations[i] * stepTime); // v += a * dt;
@@ -30,16 +30,16 @@ void Pendulum::CalculateMagnitudes() {
     }
 
     // Calculate standard deviation
-    double l_sumEnergy;
+    double l_sumEnergy = 0.;
     for (size_t i = 0; i != l_vectorSize; i++) {
-        float l_kEnergy = mass * velocities[i] * velocities[i] / 2;
+        float l_kEnergy = mass * velocities[i] * velocities[i] / 2.f;
         float l_pEnergy = mass * 9.80665f * (length - length * std::cos(coordinates[i])); // mgh = mg(l-lcos(teta))
         mEnergies.push_back(l_kEnergy + l_pEnergy);
         l_sumEnergy += static_cast<double>(mEnergies[i]);
     }
     meanMEnergy = l_sumEnergy / l_vectorSize;
 
-    double l_sumSquaredDeviations;
+    double l_sumSquaredDeviations = 0.;
 
     for (size_t i = 0; i != l_vectorSize; i++) {
         float l_deviation = mEnergies[i] - meanMEnergy;

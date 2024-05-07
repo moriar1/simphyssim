@@ -16,7 +16,7 @@ void SpringMassSystem::CalculateMagnitudes() {
 
     HarmonicOscillator::CalculateMagnitudes(); // clear vectors and push first zeros
     const size_t l_vectorSize = static_cast<size_t>(endTime / stepTime);
-    accelerations.push_back(-springConstant * coordinates[0] / mass);
+    accelerations[0] = -springConstant * coordinates[0] / mass;
 
     float l_time = 0.f;
     for (size_t i = 1; i < l_vectorSize; i++) {
@@ -30,7 +30,7 @@ void SpringMassSystem::CalculateMagnitudes() {
     }
 
     // Calculate standard deviation
-    double l_sumEnergy;
+    double l_sumEnergy = 0.;
     for (size_t i = 0; i != l_vectorSize; i++) {
         float l_kEnergy = mass * velocities[i] * velocities[i] / 2;
         float l_pEnergy = springConstant * coordinates[i] * coordinates[i] / 2;
@@ -39,7 +39,7 @@ void SpringMassSystem::CalculateMagnitudes() {
     }
     meanMEnergy = l_sumEnergy / l_vectorSize;
 
-    double l_sumSquaredDeviations;
+    double l_sumSquaredDeviations = 0.;
 
     for (size_t i = 0; i != l_vectorSize; i++) {
         float l_deviation = mEnergies[i] - meanMEnergy;
