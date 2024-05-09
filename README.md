@@ -40,6 +40,12 @@ vcpkg add port implot
 
 More informaion: https://learn.microsoft.com/en-us/vcpkg/get_started/get-started-msbuild?pivots=shell-cmdon
 
+# Used libraries
+- [SFML](https://github.com/SFML/SFML)
+- [Dear ImGui](https://github.com/ocornut/imgui)
+- [ImGui-SFML](https://github.com/SFML/imgui-sfml)
+- [ImPlot](https://github.com/epezent/implot)
+
 # Tips
 - Press ctrl and click on slider line to enter exact value
 - Right click on table to hide colomns.
