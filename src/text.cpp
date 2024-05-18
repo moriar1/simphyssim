@@ -130,7 +130,7 @@ std::string Text::GetMagnitudes(BasePhysicalSystem* l_chosenSystem, MagnitudesFl
         if (l_flags & flag_standardDeviationMEnergy)
             l_stringOutput += s_SymbolNaming.at(flag_standardDeviationMEnergy);
     }
-    // Add separator
+    // Add separator. Bug with condition
     if (l_flags & (flag_value | flag_string)) {
         if (m_isUseSymbols) {
             l_stringOutput += " = ";
@@ -192,11 +192,29 @@ void Text::BuildAllMagnitudes(BasePhysicalSystem* l_chosenSystem) {
 }
 
 // TODO: try to write new function using csv-parser
-template<typename T>
-void Text::SaveFile(FileOutputFlags l_flags) {
-    if (!(l_flags & flag_manyFiles)) {
-        if (l_flags & flag_csv) {
-            std::ofstream("data.csv");
+void Text::SaveFile(BasePhysicalSystem* l_chosenSystem, FileOutputFlags l_flags) {
+    if (l_flags & flag_csv) {
+        std::ofstream l_ofstr("data.csv");
+        for (int i = 1; i != 1 << 17; i *= 2) {
+            if (l_flags & i) l_ofstr << GetMagnitudes(l_chosenSystem, i) << ";";
         }
+
+        l_ofstr << "\n";
+        for (int i = 1; i != 1 << 17; i *= 2) {
+            if (l_flags & i) l_ofstr << GetMagnitudes(l_chosenSystem, i | flag_value) << ";";
+        }
+
+        if (l_flags & flag_coordinate || l_flags & flag_velocity || l_flags & flag_acceleration ||
+            l_flags & flag_mEnergies || l_flags & flag_mEnergyDeviations) {
+            while (1) {
+            }
+        }
+    }
+    if (l_flags & flag_txt) {
+        std::ofstream l_txtStream("data.txt");
+
+    } else {
+        std::cerr << "Text::SaveFile(BasePhysicalSystem*, FileOutputFlags). Didn't get .csv or .txt output in "
+                     "FileOutputFlag";
     }
 }

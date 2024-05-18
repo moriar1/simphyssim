@@ -16,7 +16,6 @@ public:
     // calculate variables
     float angularFrequency;
     float period;
-
     std::vector<float> coordinates; // angular coordinate (for pendulum) or abscissa (for spring-mass system)
     std::vector<float> velocities;
     std::vector<float> accelerations;
@@ -27,7 +26,6 @@ public:
 
     HarmonicOscillator();
     virtual ~HarmonicOscillator() = 0;
-
     virtual void CalculateMagnitudes() override;
     virtual void ShowAnimation(sf::RenderWindow& l_appWindow, sf::Time l_frameTime) override = 0;
     virtual void TEST() override = 0;

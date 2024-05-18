@@ -20,7 +20,10 @@ void SimulationManager::Render() {
         delete m_chosenSystem;
         m_chosenSystem = new Pendulum;
         m_chosenSystem->TEST(); // TODO: remove test
+    } else if (ImGui::Button("Save")) {
+        m_text.SaveFile(m_chosenSystem, flag_mass);
     }
+
     ImGui::EndMainMenuBar();
 
     // ---------- System config ----------

@@ -69,6 +69,5 @@ public:
     int GetPrecision() const;
     std::string GetMagnitudes(BasePhysicalSystem* l_chosenSystem, MagnitudesFlags l_flags);
 
-    template<typename T>
-    void SaveFile(FileOutputFlags l_flags = 0);
+    void SaveFile(BasePhysicalSystem* l_chosenSystem, FileOutputFlags l_flags = 0);
 };
