@@ -9,8 +9,8 @@ Prerequisite:
 
 Run:
 ```Shell
-git clone https://codeberg.org/ulfecoder/simple-physical-simulations
-cd simple-physical-simulations
+git clone https://github.com/moriar1/simphyssim
+cd simphyssim
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
