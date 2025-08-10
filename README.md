@@ -4,7 +4,7 @@
 # Build
 ## Option 1. CMake with FetchContent (recomended)
 Prerequisite:
-- git (on Windows must be available in terminal, i.e. path to the git folder is in the PATH system variable)
+- git (should be on your PATH)
 - CMake
 
 Run:
